@@ -1,0 +1,26 @@
+name: CMake_Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+    
+    - name: Build a *main.cpp* application
+      run: |
+        cmake -H. -B_build
+        cmake --build _build
+      shell: bash
+      working-directory: rk2/code
+      
