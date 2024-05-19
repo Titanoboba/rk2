@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.4)
-project(Test_code)
+project(rk2)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -21,3 +21,4 @@ if(BUILD_TESTS)
   target_link_libraries(check code gtest_main gmock_main)
   add_test(NAME check COMMAND check)
 endif()
+include(CPack.cmake)
