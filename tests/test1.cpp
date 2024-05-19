@@ -21,7 +21,7 @@ TEST(Proxy, Mock){
     prox.Login("Me", "MyPassword1234");
     prox.Append("IamTheFourthString");
     std::list<std::string> testList1;
-    testList1.insert(testList1.end() {"IamTheFirstString","IamTheSecondString","IamTheThirdString","IamTheFourthString"});
+    testList1.insert(testList1.end(), {"IamTheFirstString","IamTheSecondString","IamTheThirdString","IamTheFourthString"});
     EXPECT_THAT(prox.GetList(), ::testing::ElementsAre(testList1));
     delete database;
 }
