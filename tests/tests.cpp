@@ -12,6 +12,7 @@ class ProxyMock : public Proxy{
     MOCK_METHOD0(Truncate, void());
 };
 
+//First test
 TEST(Proxy, Mock){
     DataBase* database = new DataBase();
     database->Append("IamTheFirstString");
@@ -25,3 +26,31 @@ TEST(Proxy, Mock){
     EXPECT_EQ(prox.GetList(), testList1);
     delete database;
 }
+
+//Second test
+TEST(Proxy, Mock){
+    DataBase* database = new DataBase();
+    database->Append("IamTheFirstString");
+    database->Append("IamTheSecondString");
+    database->Append("IamTheThirdString");
+    ProxyMock prox(database);
+    prox.Login("Me", "MyPassword1234");
+    prox.Truncate();
+    std::list<std::string> testList1;
+   EXPECT_EQ(prox.GetList(), testList1);
+   delete database;
+}
+
+//Third test
+TEST(Proxy, Mock){
+    DataBase* database = new DataBase();
+    database->Append("IamTheFirstString");
+    database->Append("IamTheSecondString");
+    database->Append("IamTheThirdString");
+    ProxyMock prox(database);
+    //prox.Login("Me", "MyPassword1234"); I am not logged in
+    std::list<std::string> dummy;
+    EXPECT_EQ(prox.GetList(), dummy);
+    EXPECT_FALSE(prox.IsLogedIn());
+    delete database;
+} 
