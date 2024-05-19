@@ -1,15 +1,15 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
-#include "./code/Proxy.h"
+#include "Proxy.h"
 
 class ProxyMock : public Proxy{
     public:
     ProxyMock(DataBase*database) : Proxy(database){}
-    MOCK_METHOD(Login, (void(std::string userName,std::string password)));
-    MOCK_METHOD(Append, (void(const std::string &data)));
-    MOCK_METHOD(GetList, std::list<std::string>);
-    MOCK_METHOD(Truncate, void());
+    MOCK_METHOD2(Login, (std::string userName,std::string password));
+    MOCK_METHOD1(Append, (void(const std::string &data)));
+    MOCK_METHOD0(GetList, void());
+    MOCK_METHOD0(Truncate, void());
 };
 
 TEST(Proxy, Mock){
