@@ -14,9 +14,9 @@ class ProxyMock : public Proxy{
 
 TEST(Proxy, Mock){
     DataBase* database;
-    database->append("IamTheFirstString");
-    database->append("IamTheSecondString");
-    database->append("IamTheThirdString");
+    database->Append("IamTheFirstString");
+    database->Append("IamTheSecondString");
+    database->Append("IamTheThirdString");
     ProxyMock prox(DataBase*database);
     prox.Login("Me", "MyPassword1234");
     prox.Append("IamTheFourthString");
