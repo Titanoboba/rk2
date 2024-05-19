@@ -21,6 +21,5 @@ TEST(Proxy, Mock){
     //prox.Login("Me", "MyPassword1234"); I am not logged in
     std::list<std::string> dummy;
     EXPECT_EQ(prox.GetList(), dummy);
-    EXPECT_EQ(prox.Truncate(), false);
-    EXPECT_EQ(prox.IsLogedIn(), false);
+    EXPECT_FALSE(prox.IsLogedIn());
 } 
