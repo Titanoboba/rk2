@@ -22,6 +22,6 @@ TEST(Proxy, Mock){
     prox.Append("IamTheFourthString");
     std::list<std::string> testList1;
     testList1.insert(testList1.end(), {"IamTheFirstString","IamTheSecondString","IamTheThirdString","IamTheFourthString"});
-    EXPECT_THAT(prox.GetList(), testing::ElementsAre(testList1));
+    EXPECT_EQ(prox.GetList(), testList1);
     delete database;
 }
