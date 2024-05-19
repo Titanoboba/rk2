@@ -5,6 +5,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 option(BUILD_TESTS "Build tests" OFF)
 
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/code)
+include(CPack.cmake)
+
 if(BUILD_TESTS)
   add_compile_options(--coverage)
 endif()
@@ -21,4 +24,3 @@ if(BUILD_TESTS)
   target_link_libraries(check code gtest_main gmock_main)
   add_test(NAME check COMMAND check)
 endif()
-include(CPack.cmake)
