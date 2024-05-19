@@ -1,26 +1,40 @@
-name: CMake_Build
+name: CMake
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    branches: [main]
 
 jobs:
-  build:
+  build_Linux:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: checkout
-      uses: actions/checkout@v3
-    
-    - name: Build a *main.cpp* application
+    - uses: actions/checkout@v3
+
+    - name: Adding gtest
+      run: git clone https://github.com/google/googletest.git third-party/gtest -b release-1.11.0
+
+    - name: Install lcov
+      run: sudo apt-get install -y lcov
+
+    - name: Config code with tests
+      run: cmake -H. -B ${{github.workspace}}/build -DBUILD_TESTS=ON -DCMAKE_CXX_FLAGS='--coverage'
+
+    - name: Build code
+      run: cmake --build ${{github.workspace}}/build
+
+    - name: Run tests
       run: |
-        cmake -H. -B_build
-        cmake --build _build
-      shell: bash
-      working-directory: code
-      
+        build/check
+        lcov --directory . --capture --output-file coverage.info
+        lcov --remove coverage.info '/usr/*' --output-file coverage.info
+        lcov --remove coverage.info '${{github.workspace}}/third-party/gtest/*' --output-file coverage.info
+        lcov --list coverage.info
+
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: ${{ github.workspace }}/coverage.info
