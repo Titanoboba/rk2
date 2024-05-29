@@ -37,7 +37,7 @@ TEST(ProxyState, myTest){
     EXPECT_FALSE(prox2.IsLogedIn());
     delete database;*/
 
-    *DataBase* database = new DataBase();
+    DataBase* database = new DataBase();
     EXPECT_CALL(database, Append()).Times(3);
     database->Append("IamTheFirstString");
     database->Append("IamTheSecondString");
@@ -53,5 +53,5 @@ TEST(ProxyState, myTest){
     proxList = prox.GetList();
     EXPECT_EQ(proxList, dummy);
 
-    delete database;
+    delete *database;
 }
