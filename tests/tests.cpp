@@ -12,8 +12,7 @@ class ProxyMock : public Proxy{
     MOCK_METHOD0(Truncate, void());
 };
 
-
-TEST(ProxyState, myTest){
+TEST(ProxyState, firstTest){
     DataBase* database = new DataBase();
     database->Append("IamTheFirstString");
     database->Append("IamTheSecondString");
@@ -25,15 +24,30 @@ TEST(ProxyState, myTest){
     testList1.insert(testList1.end(), {"IamTheFirstString","IamTheSecondString","IamTheThirdString","IamTheFourthString"});
     //First test
     EXPECT_EQ(prox.GetList(), testList1);
+    delete database;
+}
+TEST(ProxyState, secondTest){
+    DataBase* database = new DataBase();
+    database->Append("IamTheFirstString");
+    database->Append("IamTheSecondString");
+    database->Append("IamTheThirdString");
+    ProxyMock prox(database);
     //Second test
     prox.Truncate();
     std::list<std::string> testList2;
     EXPECT_EQ(prox.GetList(), testList2);
+    delete database;
+}
+TEST(ProxyState, thirdTest){
+    DataBase* database = new DataBase();
+    database->Append("IamTheFirstString");
+    database->Append("IamTheSecondString");
+    database->Append("IamTheThirdString");
     //Third test
-    ProxyMock prox2(database);
-    //prox2.Login("Me", "MyPassword1234"); I am not logged in
+    ProxyMock prox(database);
+    //prox.Login("Me", "MyPassword1234"); I am not logged in
     std::list<std::string> dummy;
-    EXPECT_EQ(prox2.GetList(), dummy);
-    EXPECT_FALSE(prox2.IsLogedIn());
+    EXPECT_EQ(prox.GetList(), dummy);
+    EXPECT_FALSE(prox.IsLogedIn());
     delete database;
 }
