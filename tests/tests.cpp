@@ -14,14 +14,10 @@ class ProxyMock : public Proxy{
 
 TEST(ProxyState, firstTest){
     DataBase* database = new DataBase();
-    /*database->Append("IamTheFirstString");
+    database->Append("IamTheFirstString");
     database->Append("IamTheSecondString");
-    database->Append("IamTheThirdString");*/
+    database->Append("IamTheThirdString");
     ProxyMock prox(database);
-    
-    prox.Append("IamTheFirstString");
-    prox.Append("IamTheSecondString");
-    prox.Append("IamTheThirdString");
     prox.Login("Me", "MyPassword1234");
     prox.Append("IamTheFourthString");
     std::list<std::string> testList1;
