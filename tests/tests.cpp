@@ -18,7 +18,7 @@ TEST(ProxyState, firstTest){
     database->Append("IamTheSecondString");
     database->Append("IamTheThirdString");
     ProxyMock prox(database);
-    EXPECT_CALL(prox, Login("Me", "MyPassword1234").Times(1);
+    EXPECT_CALL(prox, Login("Me", "MyPassword1234")).Times(1);
     prox.Login("Me", "MyPassword1234");
     EXPECT_CALL(prox, Append()).Times(1);
     prox.Append("IamTheFourthString");
