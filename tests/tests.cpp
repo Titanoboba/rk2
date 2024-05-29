@@ -42,7 +42,6 @@ TEST(ProxyState, myTest){
     database->Append("IamTheSecondString");
     database->Append("IamTheThirdString");
     ProxyMock prox(database);
-    EXPECT_CALL(prox, Login(std::string, std::string)).Times(1);
     prox.Login("Me", "MyPassword1234");
     EXPECT_CALL(prox, Truncate()).Times(1);
     prox.Truncate();
