@@ -51,5 +51,5 @@ TEST(ProxyState, myTest){
     proxList = prox.GetList();
     EXPECT_EQ(proxList, dummy);
 
-    delete *database;
+    delete database;
 }
