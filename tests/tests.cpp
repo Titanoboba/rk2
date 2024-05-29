@@ -13,7 +13,7 @@ class ProxyMock : public Proxy{
 };
 
 
-TEST(Proxy, Mock){
+TEST(ProxyState, myTest){
     /*DataBase* database = new DataBase();
     database->Append("IamTheFirstString");
     database->Append("IamTheSecondString");
