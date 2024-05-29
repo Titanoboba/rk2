@@ -17,10 +17,9 @@ TEST(ProxyState, firstTest){
     database->Append("IamTheFirstString");
     database->Append("IamTheSecondString");
     database->Append("IamTheThirdString");
-    ProxyMock prox(database);
-    EXPECT_CALL(prox, Login("Me", "MyPassword1234")).Times(1);
+    Proxy prox(database);
     prox.Login("Me", "MyPassword1234");
-    EXPECT_CALL(prox, Append("IamTheFourthString")).Times(1);
+    EXPECT_TRUE(prox, IsLogedIn());
     prox.Append("IamTheFourthString");
     std::list<std::string> testList1;
     testList1.insert(testList1.end(), {"IamTheFirstString","IamTheSecondString","IamTheThirdString","IamTheFourthString"});
