@@ -2,7 +2,7 @@
 #include "Proxy.h"
 #include <list>
 #include "database.h"
-int main()
+int cmain()
 {
     DataBase *db=new DataBase();
     Proxy *proxy=new Proxy(db);
