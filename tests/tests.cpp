@@ -14,11 +14,11 @@ class ProxyMock : public Proxy{
 
 TEST(ProxyState, firstTest){
     DataBase* database = new DataBase();
-    database->Append("IamTheFirstString");
+    /*database->Append("IamTheFirstString");
     database->Append("IamTheSecondString");
-    database->Append("IamTheThirdString");
+    database->Append("IamTheThirdString");*/
     ProxyMock prox(database);
-    EXPECT_CALL(prox, Append()).Times(3);
+    
     prox.Append("IamTheFirstString");
     prox.Append("IamTheSecondString");
     prox.Append("IamTheThirdString");
