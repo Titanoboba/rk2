@@ -1,8 +1,6 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
-#include <iostream>
-
 #include "Proxy.h"
 
 class ProxyMock : public Proxy{
@@ -40,5 +38,4 @@ TEST(ProxyState, myTest){
     delete database;*/
 
     EXPECT_EQ(1,1);
-    std::cout << 'A' == 'A';
 }
