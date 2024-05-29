@@ -14,7 +14,7 @@ class ProxyMock : public Proxy{
 
 
 TEST(ProxyState, myTest){
-    /*DataBase* database = new DataBase();
+    DataBase* database = new DataBase();
     database->Append("IamTheFirstString");
     database->Append("IamTheSecondString");
     database->Append("IamTheThirdString");
@@ -35,7 +35,5 @@ TEST(ProxyState, myTest){
     std::list<std::string> dummy;
     EXPECT_EQ(prox2.GetList(), dummy);
     EXPECT_FALSE(prox2.IsLogedIn());
-    delete database;*/
-
-    EXPECT_EQ(1,1);
+    delete database;
 }
