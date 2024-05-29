@@ -2,7 +2,7 @@
 #include "Proxy.h"
 #include <list>
 #include "database.h"
-int cmain()
+void() cmain()
 {
     DataBase *db=new DataBase();
     Proxy *proxy=new Proxy(db);
@@ -16,5 +16,5 @@ int cmain()
 //     delete  db;
      proxy=NULL;
      db=NULL;
-    return 0;
+
 }
