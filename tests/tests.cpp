@@ -40,5 +40,5 @@ TEST(ProxyState, myTest){
     delete database;*/
 
     EXPECT_EQ(1,1);
-    std::cout << 1==1;
+    std::cout << true==true;
 }
