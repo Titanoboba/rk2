@@ -18,6 +18,10 @@ TEST(ProxyState, firstTest){
     database->Append("IamTheSecondString");
     database->Append("IamTheThirdString");
     ProxyMock prox(database);
+    EXPECT_CALL(prox, Append()).Times(3);
+    prox.Append("IamTheFirstString");
+    prox.Append("IamTheSecondString");
+    prox.Append("IamTheThirdString");
     prox.Login("Me", "MyPassword1234");
     prox.Append("IamTheFourthString");
     std::list<std::string> testList1;
