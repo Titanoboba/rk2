@@ -16,8 +16,5 @@ int cmain()
 //     delete  db;
      proxy=NULL;
      db=NULL;
-
-
-
-
+    return 0;
 }
